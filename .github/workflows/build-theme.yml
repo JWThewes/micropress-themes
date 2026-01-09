@@ -1,0 +1,107 @@
+name: Build and Release Theme
+
+on:
+  push:
+    tags:
+      - 'clean-minimal-v*'
+  workflow_dispatch:
+    inputs:
+      theme_name:
+        description: 'Theme name'
+        required: true
+        default: 'clean-minimal'
+      version:
+        description: 'Version (e.g., 1.0.0)'
+        required: true
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set version from tag or input
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Extract version from tag (e.g., clean-minimal-v1.0.0 -> 1.0.0)
+            VERSION=${GITHUB_REF#refs/tags/clean-minimal-v}
+            THEME_NAME="clean-minimal"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+            THEME_NAME="${{ github.event.inputs.theme_name }}"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "theme_name=$THEME_NAME" >> $GITHUB_OUTPUT
+          echo "Building $THEME_NAME version $VERSION"
+
+      - name: Verify theme files
+        run: |
+          THEME_DIR="themes/${{ steps.version.outputs.theme_name }}"
+
+          if [ ! -d "$THEME_DIR" ]; then
+            echo "Error: Theme directory not found: $THEME_DIR"
+            exit 1
+          fi
+
+          if [ ! -f "$THEME_DIR/manifest.json" ]; then
+            echo "Error: manifest.json not found"
+            exit 1
+          fi
+
+          if [ ! -f "$THEME_DIR/theme.css" ]; then
+            echo "Error: theme.css not found"
+            exit 1
+          fi
+
+          echo "✅ All required files present"
+
+      - name: Build theme ZIP
+        run: |
+          chmod +x scripts/build-theme.sh
+          ./scripts/build-theme.sh ${{ steps.version.outputs.theme_name }} ${{ steps.version.outputs.version }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.theme_name }}-v${{ steps.version.outputs.version }}
+          release_name: ${{ steps.version.outputs.theme_name }} v${{ steps.version.outputs.version }}
+          body: |
+            ## ${{ steps.version.outputs.theme_name }} v${{ steps.version.outputs.version }}
+
+            Download the ZIP file below and upload it to your MicroPress admin panel.
+
+            ### Installation
+            1. Download `${{ steps.version.outputs.theme_name }}.zip`
+            2. Go to your MicroPress admin panel
+            3. Navigate to **Themes**
+            4. Click **Upload Theme.zip**
+            5. Select the downloaded file
+            6. Click **Activate** to enable the theme
+            7. Publish your site to see changes
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./releases/${{ steps.version.outputs.theme_name }}-v${{ steps.version.outputs.version }}.zip
+          asset_name: ${{ steps.version.outputs.theme_name }}.zip
+          asset_content_type: application/zip
+
+      - name: Display Release URL
+        run: |
+          echo "✅ Release created successfully!"
+          echo "Release URL: ${{ steps.create_release.outputs.html_url }}"
+          echo "Download URL: ${{ steps.create_release.outputs.upload_url }}"
+          echo ""
+          echo "Update registry.json with:"
+          echo "  \"releaseUrl\": \"https://github.com/${{ github.repository }}/releases/download/${{ steps.version.outputs.theme_name }}-v${{ steps.version.outputs.version }}/${{ steps.version.outputs.theme_name }}.zip\""

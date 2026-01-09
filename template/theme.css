@@ -1,0 +1,93 @@
+/* My Theme for MicroPress */
+/* Replace this with your theme description */
+
+:root {
+  /* Override CSS variables from base.css */
+
+  /* Colors */
+  --mp-color-primary: #007bff;
+  --mp-color-primary-hover: #0056b3;
+  --mp-color-bg: #ffffff;
+  --mp-color-bg-alt: #f8f9fa;
+  --mp-color-text: #1f2937;
+  --mp-color-text-muted: #6b7280;
+  --mp-color-border: #e5e7eb;
+
+  /* Typography */
+  --mp-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mp-font-family-heading: var(--mp-font-family-base);
+
+  /* Layout */
+  --mp-container-max-width: 1200px;
+
+  /* Shadows */
+  --mp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --mp-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Customization */
+.mp-header {
+  /* Your header styles */
+}
+
+.mp-header__title {
+  /* Your title styles */
+}
+
+/* Navigation Customization */
+.mp-nav {
+  /* Your navigation styles */
+}
+
+.mp-nav__link {
+  /* Your link styles */
+}
+
+.mp-nav__link:hover {
+  /* Your hover styles */
+}
+
+/* Article Customization */
+.mp-article__title {
+  /* Your article title styles */
+}
+
+.mp-article__meta {
+  /* Your metadata styles */
+}
+
+/* Content/Prose Customization */
+.mp-prose {
+  /* Your content styles */
+}
+
+.mp-prose a {
+  /* Your link styles */
+}
+
+.mp-prose blockquote {
+  /* Your blockquote styles */
+}
+
+/* News List Customization */
+.mp-news-card {
+  /* Your news card styles */
+}
+
+.mp-news-card:hover {
+  /* Your hover styles */
+}
+
+/* Footer Customization */
+.mp-footer {
+  /* Your footer styles */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Mobile styles */
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet styles */
+}

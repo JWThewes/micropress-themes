@@ -1,0 +1,42 @@
+{
+  "id": "clean-minimal",
+  "name": "Clean Minimal",
+  "version": "0.0.1",
+  "description": "A clean, minimal theme with excellent readability and subtle typography",
+  "author": "MicroPress",
+  "homepage": "https://github.com/JWThewes/micropress-themes",
+  "breakpoints": {
+    "sm": "576px",
+    "md": "768px",
+    "lg": "992px",
+    "xl": "1200px"
+  },
+  "customizable": {
+    "colorPrimary": {
+      "type": "color",
+      "label": "Primary Color",
+      "default": "#2563eb"
+    },
+    "colorText": {
+      "type": "color",
+      "label": "Text Color",
+      "default": "#1f2937"
+    },
+    "colorBg": {
+      "type": "color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    "fontFamily": {
+      "type": "select",
+      "label": "Font Family",
+      "default": "system-ui",
+      "options": ["system-ui", "Georgia", "Helvetica", "Inter", "Roboto"]
+    },
+    "containerWidth": {
+      "type": "size",
+      "label": "Container Width",
+      "default": "1140px"
+    }
+  }
+}

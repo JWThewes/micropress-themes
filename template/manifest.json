@@ -1,0 +1,37 @@
+{
+  "id": "my-theme",
+  "name": "My Theme",
+  "version": "1.0.0",
+  "description": "A beautiful theme for MicroPress",
+  "author": "Your Name",
+  "homepage": "https://your-website.com",
+  "breakpoints": {
+    "sm": "576px",
+    "md": "768px",
+    "lg": "992px",
+    "xl": "1200px"
+  },
+  "customizable": {
+    "colorPrimary": {
+      "type": "color",
+      "label": "Primary Color",
+      "default": "#007bff"
+    },
+    "colorText": {
+      "type": "color",
+      "label": "Text Color",
+      "default": "#1f2937"
+    },
+    "colorBg": {
+      "type": "color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    "fontFamily": {
+      "type": "select",
+      "label": "Font Family",
+      "default": "system-ui",
+      "options": ["system-ui", "Georgia", "Helvetica", "Arial"]
+    }
+  }
+}

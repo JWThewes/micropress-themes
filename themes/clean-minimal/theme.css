@@ -1,0 +1,221 @@
+/* Clean Minimal Theme for MicroPress */
+/* A minimal, typography-focused theme with clean lines and excellent readability */
+
+:root {
+  /* Colors - Blue accent with high contrast */
+  --mp-color-primary: #2563eb;
+  --mp-color-primary-hover: #1d4ed8;
+
+  /* Clean white background with subtle grays */
+  --mp-color-bg: #ffffff;
+  --mp-color-bg-alt: #f8fafc;
+  --mp-color-text: #1f2937;
+  --mp-color-text-muted: #64748b;
+  --mp-color-border: #e2e8f0;
+
+  /* Typography - System fonts for crisp rendering */
+  --mp-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mp-font-family-heading: var(--mp-font-family-base);
+
+  /* Layout */
+  --mp-container-max-width: 1140px;
+
+  /* Subtle shadows */
+  --mp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --mp-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --mp-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Header - Clean and minimal */
+.mp-header {
+  background: var(--mp-color-bg);
+  border-bottom: 1px solid var(--mp-color-border);
+  padding: 1.5rem 0;
+}
+
+.mp-header__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Navigation - Subtle background */
+.mp-nav {
+  background: var(--mp-color-bg-alt);
+  border-bottom: 1px solid var(--mp-color-border);
+}
+
+.mp-nav__link {
+  color: var(--mp-color-text-muted);
+  font-weight: 500;
+  transition: color 150ms ease;
+}
+
+.mp-nav__link:hover,
+.mp-nav__link:focus {
+  background: transparent;
+  color: var(--mp-color-primary);
+}
+
+/* Main Content - Generous spacing */
+.mp-container {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Article - Focus on readability */
+.mp-article {
+  max-width: 42rem;
+}
+
+.mp-article__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.mp-article__meta {
+  font-size: 0.875rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--mp-color-border);
+  margin-bottom: 2rem;
+}
+
+/* Prose - Typography-focused */
+.mp-prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--mp-color-text);
+}
+
+.mp-prose h2 {
+  font-size: 1.875rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.mp-prose h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.mp-prose p {
+  margin-bottom: 1.5rem;
+}
+
+.mp-prose a {
+  color: var(--mp-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 150ms ease;
+}
+
+.mp-prose a:hover {
+  border-bottom-color: var(--mp-color-primary);
+}
+
+.mp-prose blockquote {
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 3px solid var(--mp-color-primary);
+  background: var(--mp-color-bg-alt);
+  font-style: normal;
+  font-size: 1.125rem;
+}
+
+.mp-prose code {
+  background: var(--mp-color-bg-alt);
+  padding: 0.125em 0.375em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  border: 1px solid var(--mp-color-border);
+}
+
+.mp-prose img {
+  border-radius: 0.5rem;
+  box-shadow: var(--mp-shadow-md);
+}
+
+/* News List - Card-based layout */
+.mp-news-list__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+}
+
+.mp-news-card {
+  background: var(--mp-color-bg);
+  border: 1px solid var(--mp-color-border);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 200ms ease;
+}
+
+.mp-news-card:hover {
+  box-shadow: var(--mp-shadow-md);
+  border-color: var(--mp-color-primary);
+  transform: translateY(-2px);
+}
+
+.mp-news-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.mp-news-card__link {
+  color: var(--mp-color-text);
+  transition: color 150ms ease;
+}
+
+.mp-news-card__link:hover {
+  color: var(--mp-color-primary);
+}
+
+.mp-news-card__date {
+  color: var(--mp-color-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.mp-news-card__excerpt {
+  color: var(--mp-color-text-muted);
+  line-height: 1.6;
+}
+
+/* Footer - Minimal */
+.mp-footer {
+  background: var(--mp-color-bg-alt);
+  border-top: 1px solid var(--mp-color-border);
+  margin-top: 4rem;
+}
+
+.mp-footer__copyright {
+  font-size: 0.875rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mp-article__title {
+    font-size: 1.875rem;
+  }
+
+  .mp-prose {
+    font-size: 1rem;
+  }
+
+  .mp-prose h2 {
+    font-size: 1.5rem;
+  }
+
+  .mp-prose h3 {
+    font-size: 1.25rem;
+  }
+}
