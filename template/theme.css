@@ -1,93 +1,410 @@
-/* My Theme for MicroPress */
-/* Replace this with your theme description */
+/* [Theme Name] for MicroPress */
+/* [Theme description - what makes your theme unique] */
+
+/* ==========================================================================
+   CSS Variables - Override these to customize your theme
+   ========================================================================== */
 
 :root {
-  /* Override CSS variables from base.css */
-
-  /* Colors */
+  /* -------------------------------------------------------------------------
+     Colors - Primary
+     Define your brand colors here
+     ------------------------------------------------------------------------- */
   --mp-color-primary: #007bff;
   --mp-color-primary-hover: #0056b3;
+  --mp-color-primary-subtle: rgba(0, 123, 255, 0.08);
+
+  /* -------------------------------------------------------------------------
+     Colors - Backgrounds
+     Control the page and surface backgrounds
+     ------------------------------------------------------------------------- */
   --mp-color-bg: #ffffff;
+  --mp-color-bg-canvas: #fafbfc;
   --mp-color-bg-alt: #f8f9fa;
+  --mp-color-bg-elevated: #ffffff;
+
+  /* -------------------------------------------------------------------------
+     Colors - Text
+     Set your text color hierarchy
+     ------------------------------------------------------------------------- */
   --mp-color-text: #1f2937;
   --mp-color-text-muted: #6b7280;
-  --mp-color-border: #e5e7eb;
+  --mp-color-text-light: #9ca3af;
 
-  /* Typography */
+  /* -------------------------------------------------------------------------
+     Colors - Borders
+     Define border colors for separation
+     ------------------------------------------------------------------------- */
+  --mp-color-border: #e5e7eb;
+  --mp-color-border-light: #f3f4f6;
+
+  /* -------------------------------------------------------------------------
+     Colors - Links
+     Usually inherit from primary, but can be customized
+     ------------------------------------------------------------------------- */
+  --mp-color-link: var(--mp-color-primary);
+  --mp-color-link-hover: var(--mp-color-primary-hover);
+
+  /* -------------------------------------------------------------------------
+     Typography
+     Define your font stack and sizes
+     ------------------------------------------------------------------------- */
   --mp-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --mp-font-family-heading: var(--mp-font-family-base);
+  /* --mp-font-family-mono: 'SF Mono', ui-monospace, monospace; */
 
-  /* Layout */
-  --mp-container-max-width: 1200px;
+  /* -------------------------------------------------------------------------
+     Layout
+     Control container and content widths
+     ------------------------------------------------------------------------- */
+  --mp-container-max-width: 1140px;
+  /* --mp-content-max-width: 720px; */
 
-  /* Shadows */
+  /* -------------------------------------------------------------------------
+     Shadows
+     Define elevation with shadows
+     ------------------------------------------------------------------------- */
   --mp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --mp-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --mp-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* -------------------------------------------------------------------------
+     Component Variables (Optional)
+     Fine-grained control over specific components
+     ------------------------------------------------------------------------- */
+  /* --mp-header-bg: var(--mp-color-bg-elevated); */
+  /* --mp-header-border-color: var(--mp-color-border-light); */
+  /* --mp-nav-bg: var(--mp-color-bg); */
+  /* --mp-nav-link-color: var(--mp-color-text-muted); */
+  /* --mp-nav-link-hover-color: var(--mp-color-text); */
+  /* --mp-footer-bg: var(--mp-color-bg); */
+  /* --mp-card-bg: var(--mp-color-bg-elevated); */
+  /* --mp-card-border-color: var(--mp-color-border-light); */
+  /* --mp-card-hover-border-color: var(--mp-color-border); */
 }
 
-/* Header Customization */
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
 .mp-header {
-  /* Your header styles */
+  /* background: var(--mp-header-bg); */
+  /* border-bottom: 1px solid var(--mp-header-border-color); */
+}
+
+.mp-header__brand {
+  /* Customize logo/brand area */
 }
 
 .mp-header__title {
-  /* Your title styles */
+  /* font-size: 1.25rem; */
+  /* font-weight: 600; */
+  /* color: var(--mp-color-text); */
 }
 
-/* Navigation Customization */
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
 .mp-nav {
-  /* Your navigation styles */
+  /* background: var(--mp-nav-bg); */
 }
 
 .mp-nav__link {
-  /* Your link styles */
+  /* color: var(--mp-nav-link-color); */
+  /* font-weight: 500; */
 }
 
-.mp-nav__link:hover {
-  /* Your hover styles */
+.mp-nav__link:hover,
+.mp-nav__link:focus {
+  /* color: var(--mp-color-primary); */
 }
 
-/* Article Customization */
+/* Underline animation on hover */
+.mp-nav__link::after {
+  /* background: var(--mp-color-primary); */
+}
+
+/* Dropdown menus */
+.mp-nav__submenu {
+  /* background: var(--mp-color-bg-elevated); */
+  /* border: 1px solid var(--mp-color-border-light); */
+  /* box-shadow: var(--mp-shadow-lg); */
+}
+
+.mp-nav__submenu .mp-nav__link:hover,
+.mp-nav__submenu .mp-nav__link:focus {
+  /* background: var(--mp-color-primary-subtle); */
+  /* color: var(--mp-color-primary); */
+}
+
+
+/* ==========================================================================
+   Article / Page Content
+   ========================================================================== */
+
+.mp-article {
+  /* max-width: var(--mp-content-max-width); */
+}
+
 .mp-article__title {
-  /* Your article title styles */
+  /* font-size: 2.5rem; */
+  /* font-weight: 700; */
+  /* color: var(--mp-color-text); */
 }
 
 .mp-article__meta {
-  /* Your metadata styles */
+  /* color: var(--mp-color-text-muted); */
+  /* border-bottom: 1px solid var(--mp-color-border-light); */
 }
 
-/* Content/Prose Customization */
+
+/* ==========================================================================
+   Prose / Content Typography
+   ========================================================================== */
+
 .mp-prose {
-  /* Your content styles */
+  /* line-height: 1.75; */
+  /* color: var(--mp-color-text); */
 }
 
 .mp-prose a {
-  /* Your link styles */
+  /* color: var(--mp-color-primary); */
+  /* text-decoration: none; */
+}
+
+.mp-prose a:hover {
+  /* text-decoration: underline; */
+}
+
+.mp-prose h2,
+.mp-prose h3,
+.mp-prose h4 {
+  /* color: var(--mp-color-text); */
+  /* font-weight: 600; */
 }
 
 .mp-prose blockquote {
-  /* Your blockquote styles */
+  /* border-left: 3px solid var(--mp-color-primary); */
+  /* background: var(--mp-color-bg-alt); */
+  /* font-style: italic; */
 }
 
-/* News List Customization */
+.mp-prose code {
+  /* background: var(--mp-color-bg-alt); */
+  /* padding: 0.2em 0.4em; */
+  /* border-radius: 0.25rem; */
+}
+
+.mp-prose pre {
+  /* background: var(--mp-color-bg-alt); */
+  /* border-radius: 0.5rem; */
+}
+
+.mp-prose img {
+  /* border-radius: 0.5rem; */
+  /* box-shadow: var(--mp-shadow-md); */
+}
+
+
+/* ==========================================================================
+   News List & Cards
+   ========================================================================== */
+
+.mp-news-list__title {
+  /* font-size: 2.5rem; */
+  /* font-weight: 700; */
+}
+
 .mp-news-card {
-  /* Your news card styles */
+  /* background: var(--mp-card-bg); */
+  /* border: 1px solid var(--mp-card-border-color); */
+  /* border-radius: 0.75rem; */
 }
 
 .mp-news-card:hover {
-  /* Your hover styles */
+  /* border-color: var(--mp-color-primary); */
+  /* box-shadow: var(--mp-shadow-md); */
+  /* transform: translateY(-2px); */
 }
 
-/* Footer Customization */
+.mp-news-card__title {
+  /* font-size: 1.25rem; */
+  /* font-weight: 600; */
+}
+
+.mp-news-card__link {
+  /* color: var(--mp-color-text); */
+}
+
+.mp-news-card__link:hover {
+  /* color: var(--mp-color-primary); */
+}
+
+.mp-news-card__date {
+  /* color: var(--mp-color-text-light); */
+  /* font-size: 0.875rem; */
+}
+
+.mp-news-card__excerpt {
+  /* color: var(--mp-color-text-muted); */
+}
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
 .mp-footer {
-  /* Your footer styles */
+  /* background: var(--mp-footer-bg); */
+  /* border-top: 1px solid var(--mp-color-border-light); */
 }
 
-/* Responsive Design */
+.mp-footer__copyright {
+  /* color: var(--mp-color-text-muted); */
+}
+
+.mp-footer__link {
+  /* color: var(--mp-color-text-muted); */
+}
+
+.mp-footer__link:hover {
+  /* color: var(--mp-color-primary); */
+}
+
+
+/* ==========================================================================
+   Focus & Selection States
+   ========================================================================== */
+
+:focus-visible {
+  /* outline: 2px solid var(--mp-color-primary); */
+  /* outline-offset: 2px; */
+}
+
+::selection {
+  /* background: var(--mp-color-primary); */
+  /* color: white; */
+}
+
+
+/* ==========================================================================
+   Page Type Targeting (Optional)
+   Use data attributes to style specific pages differently
+   ========================================================================== */
+
+/* Home page specific styles */
+/* body[data-page-type="home"] .mp-header { } */
+
+/* News article specific styles */
+/* body[data-page-type="news-article"] .mp-article { } */
+
+/* Content type targeting */
+/* .mp-article[data-content-type="page"] { } */
+/* .mp-article[data-content-type="news-article"] { } */
+
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
 @media (max-width: 768px) {
-  /* Mobile styles */
+  /* Mobile header */
+  .mp-header__menu-icon,
+  .mp-header__menu-icon::before,
+  .mp-header__menu-icon::after {
+    /* background: var(--mp-color-text); */
+  }
+
+  /* Mobile navigation */
+  .mp-nav {
+    /* background: var(--mp-color-bg-elevated); */
+  }
+
+  .mp-nav__link {
+    /* color: var(--mp-color-text); */
+  }
+
+  .mp-nav__link:hover,
+  .mp-nav__link:focus {
+    /* background: var(--mp-color-primary-subtle); */
+  }
+
+  /* Mobile submenu */
+  .mp-nav__submenu {
+    /* background: transparent; */
+  }
+
+  .mp-nav__submenu .mp-nav__link {
+    /* color: var(--mp-color-text-muted); */
+  }
+
+  /* Mobile typography adjustments */
+  .mp-article__title {
+    /* font-size: 1.75rem; */
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* Tablet styles */
+  /* Tablet specific styles */
 }
+
+
+/* ==========================================================================
+   Print Styles (Optional)
+   ========================================================================== */
+
+@media print {
+  .mp-header,
+  .mp-nav,
+  .mp-footer {
+    display: none;
+  }
+
+  .mp-main {
+    padding: 0;
+  }
+
+  .mp-article {
+    max-width: 100%;
+  }
+
+  .mp-article__title {
+    color: black;
+  }
+
+  .mp-prose a {
+    color: black;
+    text-decoration: underline;
+  }
+}
+
+
+/* ==========================================================================
+   Dark Mode Support (Optional)
+   Uncomment to enable automatic dark mode based on user preference
+   ========================================================================== */
+
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mp-color-bg-canvas: #0f172a;
+    --mp-color-bg: #1e293b;
+    --mp-color-bg-alt: #334155;
+    --mp-color-bg-elevated: #1e293b;
+
+    --mp-color-text: #e2e8f0;
+    --mp-color-text-muted: #94a3b8;
+    --mp-color-text-light: #64748b;
+
+    --mp-color-border: #334155;
+    --mp-color-border-light: #1e293b;
+
+    --mp-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --mp-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --mp-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+*/

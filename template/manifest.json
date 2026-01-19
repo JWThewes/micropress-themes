@@ -2,9 +2,10 @@
   "id": "my-theme",
   "name": "My Theme",
   "version": "1.0.0",
-  "description": "A beautiful theme for MicroPress",
+  "description": "A beautiful custom theme for MicroPress with [describe your unique features]",
   "author": "Your Name",
-  "homepage": "https://your-website.com",
+  "homepage": "https://github.com/yourusername/my-theme",
+  "license": "MIT",
   "breakpoints": {
     "sm": "576px",
     "md": "768px",
@@ -15,23 +16,97 @@
     "colorPrimary": {
       "type": "color",
       "label": "Primary Color",
+      "description": "Main brand/accent color used for links, buttons, and highlights",
       "default": "#007bff"
+    },
+    "colorPrimaryHover": {
+      "type": "color",
+      "label": "Primary Hover Color",
+      "description": "Hover state for primary color elements",
+      "default": "#0056b3"
     },
     "colorText": {
       "type": "color",
       "label": "Text Color",
+      "description": "Main body text color",
       "default": "#1f2937"
+    },
+    "colorTextMuted": {
+      "type": "color",
+      "label": "Muted Text Color",
+      "description": "Secondary/muted text color",
+      "default": "#6b7280"
     },
     "colorBg": {
       "type": "color",
       "label": "Background Color",
+      "description": "Main background color for content areas",
       "default": "#ffffff"
     },
-    "fontFamily": {
+    "colorBgCanvas": {
+      "type": "color",
+      "label": "Page Background",
+      "description": "Overall page canvas background color",
+      "default": "#fafbfc"
+    },
+    "colorBorder": {
+      "type": "color",
+      "label": "Border Color",
+      "description": "Default border color for separators and outlines",
+      "default": "#e5e7eb"
+    },
+    "fontFamilyBase": {
       "type": "select",
-      "label": "Font Family",
+      "label": "Body Font",
+      "description": "Font family for body text",
       "default": "system-ui",
-      "options": ["system-ui", "Georgia", "Helvetica", "Arial"]
+      "options": [
+        "system-ui",
+        "Inter",
+        "Roboto",
+        "Open Sans",
+        "Lato",
+        "Georgia",
+        "Merriweather"
+      ]
+    },
+    "fontFamilyHeading": {
+      "type": "select",
+      "label": "Heading Font",
+      "description": "Font family for headings",
+      "default": "system-ui",
+      "options": [
+        "system-ui",
+        "Inter",
+        "Roboto",
+        "Open Sans",
+        "Lato",
+        "Georgia",
+        "Merriweather",
+        "Playfair Display"
+      ]
+    },
+    "containerMaxWidth": {
+      "type": "size",
+      "label": "Container Width",
+      "description": "Maximum width of the content container",
+      "default": "1140px"
+    },
+    "contentMaxWidth": {
+      "type": "size",
+      "label": "Content Width",
+      "description": "Maximum width for article/prose content",
+      "default": "720px"
+    },
+    "borderRadiusMd": {
+      "type": "size",
+      "label": "Border Radius",
+      "description": "Default border radius for cards and buttons",
+      "default": "0.5rem"
     }
-  }
+  },
+  "tags": ["light", "modern", "minimal"],
+  "screenshots": [
+    "preview.png"
+  ]
 }

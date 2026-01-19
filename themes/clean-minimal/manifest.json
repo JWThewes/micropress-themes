@@ -1,10 +1,11 @@
 {
   "id": "clean-minimal",
   "name": "Clean Minimal",
-  "version": "0.0.1",
-  "description": "A clean, minimal theme with excellent readability and subtle typography",
+  "version": "0.1.0",
+  "description": "A clean, minimal theme with excellent readability and typography-focused design. Perfect for blogs, portfolios, and content-focused sites.",
   "author": "MicroPress",
   "homepage": "https://github.com/JWThewes/micropress-themes",
+  "license": "MIT",
   "breakpoints": {
     "sm": "576px",
     "md": "768px",
@@ -15,28 +16,69 @@
     "colorPrimary": {
       "type": "color",
       "label": "Primary Color",
+      "description": "Main accent color for links, buttons, and highlights",
       "default": "#2563eb"
+    },
+    "colorPrimaryHover": {
+      "type": "color",
+      "label": "Primary Hover",
+      "description": "Hover state for primary color elements",
+      "default": "#1d4ed8"
     },
     "colorText": {
       "type": "color",
       "label": "Text Color",
+      "description": "Main body text color",
       "default": "#1f2937"
+    },
+    "colorTextMuted": {
+      "type": "color",
+      "label": "Muted Text",
+      "description": "Secondary/muted text color",
+      "default": "#64748b"
     },
     "colorBg": {
       "type": "color",
-      "label": "Background Color",
+      "label": "Background",
+      "description": "Main background color",
       "default": "#ffffff"
     },
-    "fontFamily": {
-      "type": "select",
-      "label": "Font Family",
-      "default": "system-ui",
-      "options": ["system-ui", "Georgia", "Helvetica", "Inter", "Roboto"]
+    "colorBgAlt": {
+      "type": "color",
+      "label": "Alt Background",
+      "description": "Alternative background for code blocks, quotes",
+      "default": "#f8fafc"
     },
-    "containerWidth": {
+    "colorBorder": {
+      "type": "color",
+      "label": "Border Color",
+      "description": "Border color for cards and separators",
+      "default": "#e2e8f0"
+    },
+    "fontFamilyBase": {
+      "type": "select",
+      "label": "Body Font",
+      "description": "Font family for body text",
+      "default": "system-ui",
+      "options": [
+        "system-ui",
+        "Inter",
+        "Roboto",
+        "Open Sans",
+        "Lato",
+        "Georgia",
+        "Merriweather"
+      ]
+    },
+    "containerMaxWidth": {
       "type": "size",
       "label": "Container Width",
+      "description": "Maximum width of the content container",
       "default": "1140px"
     }
-  }
+  },
+  "tags": ["light", "minimal", "typography", "blog", "clean"],
+  "screenshots": [
+    "preview.png"
+  ]
 }

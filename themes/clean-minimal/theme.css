@@ -2,51 +2,92 @@
 /* A minimal, typography-focused theme with clean lines and excellent readability */
 
 :root {
-  /* Colors - Blue accent with high contrast */
+  /* ==========================================================================
+     Color Palette - Classic blue with high contrast
+     ========================================================================== */
+
+  /* Primary - Professional blue */
   --mp-color-primary: #2563eb;
   --mp-color-primary-hover: #1d4ed8;
+  --mp-color-primary-subtle: rgba(37, 99, 235, 0.08);
 
-  /* Clean white background with subtle grays */
+  /* Backgrounds - Clean whites with subtle grays */
   --mp-color-bg: #ffffff;
+  --mp-color-bg-canvas: #ffffff;
   --mp-color-bg-alt: #f8fafc;
+  --mp-color-bg-elevated: #ffffff;
+
+  /* Text - High contrast for readability */
   --mp-color-text: #1f2937;
   --mp-color-text-muted: #64748b;
-  --mp-color-border: #e2e8f0;
+  --mp-color-text-light: #94a3b8;
 
-  /* Typography - System fonts for crisp rendering */
+  /* Borders - Subtle definition */
+  --mp-color-border: #e2e8f0;
+  --mp-color-border-light: #f1f5f9;
+
+  /* Links */
+  --mp-color-link: var(--mp-color-primary);
+  --mp-color-link-hover: var(--mp-color-primary-hover);
+
+  /* ==========================================================================
+     Component Variables - Fine-grained control
+     ========================================================================== */
+
+  --mp-header-bg: var(--mp-color-bg);
+  --mp-header-border-color: var(--mp-color-border);
+  --mp-nav-bg: var(--mp-color-bg-alt);
+  --mp-nav-link-color: var(--mp-color-text-muted);
+  --mp-nav-link-hover-color: var(--mp-color-primary);
+  --mp-footer-bg: var(--mp-color-bg-alt);
+  --mp-card-bg: var(--mp-color-bg);
+  --mp-card-border-color: var(--mp-color-border);
+  --mp-card-hover-border-color: var(--mp-color-primary);
+
+  /* ==========================================================================
+     Typography - System fonts for crisp rendering
+     ========================================================================== */
+
   --mp-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --mp-font-family-heading: var(--mp-font-family-base);
 
-  /* Layout */
-  --mp-container-max-width: 1140px;
+  /* ==========================================================================
+     Shadows - Subtle depth
+     ========================================================================== */
 
-  /* Subtle shadows */
   --mp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
   --mp-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.05);
   --mp-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Header - Clean and minimal */
+/* ==========================================================================
+   Header - Clean and minimal
+   ========================================================================== */
+
 .mp-header {
-  background: var(--mp-color-bg);
-  border-bottom: 1px solid var(--mp-color-border);
-  padding: 1.5rem 0;
+  background: var(--mp-header-bg);
+  border-bottom: 1px solid var(--mp-header-border-color);
+  backdrop-filter: none;
 }
 
 .mp-header__title {
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.025em;
+  color: var(--mp-color-text);
 }
 
-/* Navigation - Subtle background */
+/* ==========================================================================
+   Navigation - Subtle background
+   ========================================================================== */
+
 .mp-nav {
-  background: var(--mp-color-bg-alt);
+  background: var(--mp-nav-bg);
   border-bottom: 1px solid var(--mp-color-border);
 }
 
 .mp-nav__link {
-  color: var(--mp-color-text-muted);
+  color: var(--mp-nav-link-color);
   font-weight: 500;
   transition: color 150ms ease;
 }
@@ -54,16 +95,46 @@
 .mp-nav__link:hover,
 .mp-nav__link:focus {
   background: transparent;
+  color: var(--mp-nav-link-hover-color);
+}
+
+/* Remove underline animation for minimal look */
+.mp-nav__link::after {
+  display: none;
+}
+
+/* Dropdown menus */
+.mp-nav__submenu {
+  background: var(--mp-color-bg);
+  border: 1px solid var(--mp-color-border);
+  border-radius: 0.5rem;
+  box-shadow: var(--mp-shadow-md);
+}
+
+.mp-nav__submenu .mp-nav__link {
+  color: var(--mp-color-text-muted);
+  transition: color 150ms ease;
+}
+
+.mp-nav__submenu .mp-nav__link:hover,
+.mp-nav__submenu .mp-nav__link:focus {
+  background: var(--mp-color-bg-alt);
   color: var(--mp-color-primary);
 }
 
-/* Main Content - Generous spacing */
+/* ==========================================================================
+   Main Content - Generous spacing
+   ========================================================================== */
+
 .mp-container {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
 
-/* Article - Focus on readability */
+/* ==========================================================================
+   Article - Focus on readability
+   ========================================================================== */
+
 .mp-article {
   max-width: 42rem;
 }
@@ -74,6 +145,7 @@
   letter-spacing: -0.025em;
   line-height: 1.2;
   margin-bottom: 1rem;
+  color: var(--mp-color-text);
 }
 
 .mp-article__meta {
@@ -81,9 +153,13 @@
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--mp-color-border);
   margin-bottom: 2rem;
+  color: var(--mp-color-text-muted);
 }
 
-/* Prose - Typography-focused */
+/* ==========================================================================
+   Prose - Typography-focused
+   ========================================================================== */
+
 .mp-prose {
   font-size: 1.125rem;
   line-height: 1.75;
@@ -127,6 +203,7 @@
   background: var(--mp-color-bg-alt);
   font-style: normal;
   font-size: 1.125rem;
+  color: var(--mp-color-text);
 }
 
 .mp-prose code {
@@ -137,22 +214,31 @@
   border: 1px solid var(--mp-color-border);
 }
 
+.mp-prose pre {
+  background: var(--mp-color-bg-alt);
+  border: 1px solid var(--mp-color-border);
+}
+
 .mp-prose img {
   border-radius: 0.5rem;
   box-shadow: var(--mp-shadow-md);
 }
 
-/* News List - Card-based layout */
+/* ==========================================================================
+   News List - Card-based layout
+   ========================================================================== */
+
 .mp-news-list__title {
   font-size: 2.25rem;
   font-weight: 700;
   letter-spacing: -0.025em;
   margin-bottom: 2rem;
+  color: var(--mp-color-text);
 }
 
 .mp-news-card {
-  background: var(--mp-color-bg);
-  border: 1px solid var(--mp-color-border);
+  background: var(--mp-card-bg);
+  border: 1px solid var(--mp-card-border-color);
   padding: 1.5rem;
   border-radius: 0.5rem;
   transition: all 200ms ease;
@@ -160,7 +246,7 @@
 
 .mp-news-card:hover {
   box-shadow: var(--mp-shadow-md);
-  border-color: var(--mp-color-primary);
+  border-color: var(--mp-card-hover-border-color);
   transform: translateY(-2px);
 }
 
@@ -190,18 +276,48 @@
   line-height: 1.6;
 }
 
-/* Footer - Minimal */
+/* ==========================================================================
+   Footer - Minimal
+   ========================================================================== */
+
 .mp-footer {
-  background: var(--mp-color-bg-alt);
+  background: var(--mp-footer-bg);
   border-top: 1px solid var(--mp-color-border);
   margin-top: 4rem;
 }
 
 .mp-footer__copyright {
   font-size: 0.875rem;
+  color: var(--mp-color-text-muted);
 }
 
-/* Responsive adjustments */
+.mp-footer__link {
+  color: var(--mp-color-text-muted);
+  transition: color 150ms ease;
+}
+
+.mp-footer__link:hover {
+  color: var(--mp-color-primary);
+}
+
+/* ==========================================================================
+   Focus & Selection
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--mp-color-primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--mp-color-primary);
+  color: white;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .mp-article__title {
     font-size: 1.875rem;
@@ -217,5 +333,94 @@
 
   .mp-prose h3 {
     font-size: 1.25rem;
+  }
+
+  .mp-news-card:hover {
+    transform: none;
+  }
+
+  /* Hamburger button styling */
+  .mp-header__menu-icon,
+  .mp-header__menu-icon::before,
+  .mp-header__menu-icon::after {
+    background: var(--mp-color-text-muted);
+  }
+
+  .mp-header__menu-toggle:hover .mp-header__menu-icon,
+  .mp-header__menu-toggle:hover .mp-header__menu-icon::before,
+  .mp-header__menu-toggle:hover .mp-header__menu-icon::after {
+    background: var(--mp-color-primary);
+  }
+
+  /* Mobile navigation */
+  .mp-nav {
+    background: var(--mp-color-bg-elevated);
+  }
+
+  .mp-nav__link {
+    color: var(--mp-color-text);
+  }
+
+  .mp-nav__link:hover,
+  .mp-nav__link:focus {
+    background: var(--mp-color-bg-alt);
+    color: var(--mp-color-primary);
+  }
+
+  /* Mobile nested navigation */
+  .mp-nav__toggle {
+    color: var(--mp-color-text-muted);
+  }
+
+  .mp-nav__toggle:hover,
+  .mp-nav__toggle:focus {
+    background: var(--mp-color-bg);
+    color: var(--mp-color-primary);
+  }
+
+  .mp-nav__submenu {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .mp-nav__submenu .mp-nav__link {
+    color: var(--mp-color-text-muted);
+  }
+
+  .mp-nav__submenu .mp-nav__link:hover,
+  .mp-nav__submenu .mp-nav__link:focus {
+    background: var(--mp-color-bg-alt);
+    color: var(--mp-color-primary);
+  }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  .mp-header,
+  .mp-nav,
+  .mp-footer {
+    display: none;
+  }
+
+  .mp-main {
+    padding: 0;
+  }
+
+  .mp-article {
+    max-width: 100%;
+  }
+
+  .mp-article__title {
+    color: black;
+  }
+
+  .mp-prose a {
+    color: black;
+    text-decoration: underline;
   }
 }
