@@ -145,39 +145,83 @@ body.mp-body::before {
 
 /* Floating Vertical Nav Concept for Desktop */
 @media (min-width: 1025px) {
+  body {
+    padding-left: 100px;
+  }
+
   .mp-nav {
     position: fixed;
-    left: 2rem;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
     background: var(--mp-nav-bg);
     border: 2px solid var(--neon-cyan);
-    border-radius: 1rem;
-    padding: 1.5rem 1rem;
+    border-radius: 0.5rem;
+    padding: 2rem 0.5rem;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
     z-index: 100;
+    transition: all 0.3s ease;
+  }
+
+  .mp-nav:hover {
+    box-shadow: 0 0 40px var(--neon-cyan);
+    left: 1.5rem;
   }
 
   .mp-nav__list {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .mp-nav__link {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    padding: 1rem 0.5rem;
-    font-size: 1.2rem;
-    letter-spacing: 0.2rem;
-    transition: all 0.3s ease;
+    padding: 1.5rem 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.3rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-right: 3px solid transparent;
+    text-transform: uppercase;
+    color: var(--mp-color-text-muted);
   }
 
   .mp-nav__link:hover {
     color: var(--neon-cyan);
-    text-shadow: 0 0 10px var(--neon-cyan);
+    text-shadow: 0 0 15px var(--neon-cyan);
     border-right-color: var(--neon-cyan);
+    transform: rotate(180deg) scale(1.1);
+  }
+}
+
+/* Handle smaller screens where vertical nav doesn't fit well */
+@media (max-width: 1024px) {
+  .mp-nav {
+    background: var(--mp-nav-bg);
+    padding: 1rem;
+    border-bottom: 2px solid var(--neon-pink);
+    margin-bottom: 2rem;
+  }
+  
+  .mp-nav__list {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .mp-nav__link {
+    color: var(--mp-color-text);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s ease;
+  }
+
+  .mp-nav__link:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
   }
 }
 
