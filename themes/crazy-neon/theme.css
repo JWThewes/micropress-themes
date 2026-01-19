@@ -146,12 +146,12 @@ body.mp-body::before {
 /* Floating Vertical Nav Concept for Desktop */
 @media (min-width: 1025px) {
   body {
-    padding-left: 100px;
+    padding-left: 120px; /* Increased gutter */
   }
 
   .mp-nav {
     position: fixed;
-    left: 1rem;
+    left: 20px; /* Back to a fixed distance from the edge, but with enough body padding */
     top: 50%;
     transform: translateY(-50%);
     background: var(--mp-nav-bg);
@@ -165,7 +165,7 @@ body.mp-body::before {
 
   .mp-nav:hover {
     box-shadow: 0 0 40px var(--neon-cyan);
-    left: 1.5rem;
+    transform: translateY(-50%) scale(1.05);
   }
 
   .mp-nav__list {
