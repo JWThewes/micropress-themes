@@ -7,8 +7,18 @@
       "latestVersion": "0.1.0",
       "author": "MicroPress",
       "githubRepo": "JWThewes/micropress-themes",
-      "releaseUrl": "https://github.com/JWThewes/micropress-themes/releases/download/clean-minimal-v0.0.1/clean-minimal.zip",
+      "releaseUrl": "https://github.com/JWThewes/micropress-themes/releases/download/clean-minimal-v0.1.0/clean-minimal.zip",
       "previewUrl": "https://raw.githubusercontent.com/JWThewes/micropress-themes/main/themes/clean-minimal/preview.png"
+    },
+    {
+      "id": "crazy-neon",
+      "name": "Crazy Neon",
+      "description": "An over-the-top cyberpunk theme showcasing the extreme flexibility of MicroPress theming.",
+      "latestVersion": "0.1.0",
+      "author": "MicroPress",
+      "githubRepo": "JWThewes/micropress-themes",
+      "releaseUrl": "https://github.com/JWThewes/micropress-themes/releases/download/crazy-neon-v0.1.0/crazy-neon.zip",
+      "previewUrl": "https://raw.githubusercontent.com/JWThewes/micropress-themes/main/themes/crazy-neon/preview.png"
     }
   ]
 }

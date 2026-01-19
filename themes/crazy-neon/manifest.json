@@ -1,0 +1,87 @@
+{
+  "id": "crazy-neon",
+  "name": "Crazy Neon",
+  "version": "0.1.0",
+  "description": "An over-the-top cyberpunk theme showcasing the extreme flexibility of MicroPress theming. Features animated gradients, neon glows, 3D transforms, glitch effects, and unconventional navigation. NOT for the faint of heart!",
+  "author": "MicroPress",
+  "homepage": "https://github.com/JWThewes/micropress-themes",
+  "license": "MIT",
+  "breakpoints": {
+    "sm": "576px",
+    "md": "768px",
+    "lg": "992px",
+    "xl": "1200px"
+  },
+  "customizable": {
+    "colorNeonPink": {
+      "type": "color",
+      "label": "Neon Pink",
+      "description": "Primary neon accent color",
+      "default": "#ff00ff"
+    },
+    "colorNeonCyan": {
+      "type": "color",
+      "label": "Neon Cyan",
+      "description": "Secondary neon accent color",
+      "default": "#00ffff"
+    },
+    "colorNeonYellow": {
+      "type": "color",
+      "label": "Neon Yellow",
+      "description": "Tertiary accent for highlights",
+      "default": "#ffff00"
+    },
+    "colorBgDark": {
+      "type": "color",
+      "label": "Dark Background",
+      "description": "Deep dark background color",
+      "default": "#0a0a0f"
+    },
+    "colorBgPurple": {
+      "type": "color",
+      "label": "Purple Tint",
+      "description": "Purple accent for gradients",
+      "default": "#1a0a2e"
+    },
+    "glowIntensity": {
+      "type": "select",
+      "label": "Glow Intensity",
+      "description": "How intense should the neon glows be?",
+      "default": "intense",
+      "options": [
+        "subtle",
+        "medium",
+        "intense",
+        "MAXIMUM"
+      ]
+    },
+    "animationSpeed": {
+      "type": "select",
+      "label": "Animation Speed",
+      "description": "Speed of background and hover animations",
+      "default": "normal",
+      "options": [
+        "chill",
+        "normal",
+        "fast",
+        "HYPERACTIVE"
+      ]
+    },
+    "threeDIntensity": {
+      "type": "select",
+      "label": "3D Intensity",
+      "description": "How '3D' should the elements be?",
+      "default": "wild",
+      "options": [
+        "flat",
+        "subtle",
+        "wild",
+        "INSANE"
+      ]
+    }
+  },
+  "tags": ["dark", "neon", "cyberpunk", "animated", "experimental", "crazy", "showcase"],
+  "screenshots": [
+    "preview.png"
+  ]
+}

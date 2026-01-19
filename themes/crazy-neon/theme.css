@@ -1,0 +1,376 @@
+/* Crazy Neon Theme for MicroPress */
+/* A wild, electric, cyberpunk-inspired theme to show off the art of the possible */
+
+:root {
+  /* ==========================================================================
+     Cyberpunk Palette
+     ========================================================================== */
+  --neon-pink: #ff00ff;
+  --neon-cyan: #00ffff;
+  --neon-yellow: #ffff00;
+  --neon-blue: #0066ff;
+  --bg-deep: #0a0a0f;
+  --bg-surface: #151520;
+  
+  /* MicroPress Overrides */
+  --mp-color-primary: var(--neon-pink);
+  --mp-color-primary-hover: var(--neon-cyan);
+  --mp-color-primary-subtle: rgba(255, 0, 255, 0.15);
+
+  --mp-color-bg: var(--bg-deep);
+  --mp-color-bg-canvas: var(--bg-deep);
+  --mp-color-bg-alt: #1a0a2e;
+  --mp-color-bg-elevated: var(--bg-surface);
+
+  --mp-color-text: #ffffff;
+  --mp-color-text-muted: #b0b0cc;
+  --mp-color-text-light: #808099;
+
+  --mp-color-border: #333344;
+  --mp-color-border-light: #222233;
+
+  --mp-font-family-base: 'Space Mono', 'Courier New', monospace;
+  --mp-font-family-heading: 'Syncopate', 'Arial Black', sans-serif;
+
+  /* Component Overrides */
+  --mp-header-bg: transparent;
+  --mp-nav-bg: rgba(10, 10, 15, 0.8);
+  --mp-card-bg: var(--bg-surface);
+  
+  /* Custom Variables */
+  --glow-sm: 0 0 5px var(--mp-color-primary);
+  --glow-md: 0 0 15px var(--mp-color-primary);
+  --glow-lg: 0 0 30px var(--mp-color-primary);
+  
+  --animation-speed: 10s;
+}
+
+/* ==========================================================================
+   Global Animations & Backgrounds
+   ========================================================================== */
+
+body.mp-body {
+  background-color: var(--bg-deep);
+  background-image: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 3D Floating Elements Background */
+body.mp-body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--mp-color-primary-subtle) 0%, transparent 10%),
+    radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.1) 0%, transparent 15%);
+  animation: bg-pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes bg-pulse {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+/* 3D Floating Cubes (Pseudo-elements on a container if we had one, but we use body) */
+/* Since we are limited to CSS, we can use multiple backgrounds or more pseudo-elements if available. 
+   We'll use a scrolling "digital rain" or "3D stars" effect via background-image */
+
+/* Retro Grid Background - ENHANCED */
+body.mp-body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    linear-gradient(var(--mp-color-border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mp-color-border-light) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(300px) rotateX(65deg) translateY(-50%) translateZ(0);
+  animation: grid-move var(--animation-speed) linear infinite;
+  z-index: -2;
+  opacity: 0.4;
+}
+
+@keyframes grid-move {
+  0% { transform: perspective(300px) rotateX(65deg) translateY(-50%); }
+  100% { transform: perspective(300px) rotateX(65deg) translateY(-25%); }
+}
+
+/* ==========================================================================
+   Header & Floating Navigation
+   ========================================================================== */
+
+.mp-header {
+  border-bottom: none;
+  padding: 2rem 0;
+}
+
+.mp-header__title {
+  font-family: var(--mp-font-family-heading);
+  text-transform: uppercase;
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: var(--glow-md), 0 0 50px var(--neon-blue);
+  letter-spacing: 0.5rem;
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px var(--neon-pink),
+      0 0 80px var(--neon-pink),
+      0 0 90px var(--neon-pink),
+      0 0 100px var(--neon-pink),
+      0 0 150px var(--neon-pink);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* Floating Vertical Nav Concept for Desktop */
+@media (min-width: 1025px) {
+  .mp-nav {
+    position: fixed;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--mp-nav-bg);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    z-index: 100;
+  }
+
+  .mp-nav__list {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mp-nav__link {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    padding: 1rem 0.5rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    transition: all 0.3s ease;
+    border-right: 3px solid transparent;
+  }
+
+  .mp-nav__link:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+    border-right-color: var(--neon-cyan);
+  }
+}
+
+/* ==========================================================================
+   News List - Crazy Isometric Cards
+   ========================================================================== */
+
+.mp-news-list__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+  perspective: 1000px;
+}
+
+.mp-news-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--neon-blue);
+  padding: 2rem;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.mp-news-card:hover {
+  transform: rotateY(-15deg) rotateX(15deg) translateZ(50px);
+  border-color: var(--neon-pink);
+  box-shadow: 20px 20px 50px rgba(255, 0, 255, 0.2);
+}
+
+.mp-news-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 255, 0.05);
+  transform: translateZ(-20px);
+  border: 1px solid var(--neon-pink);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.mp-news-card:hover::after {
+  opacity: 1;
+  transform: translateZ(-40px) scale(1.05);
+}
+
+/* Layered Parallax Effect on Hover */
+.mp-news-card__title,
+.mp-news-card__date,
+.mp-news-card__excerpt,
+.mp-news-card__link {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mp-news-card:hover .mp-news-card__title {
+  transform: translateZ(40px);
+  text-shadow: 5px 5px 10px rgba(0, 255, 255, 0.5);
+}
+
+.mp-news-card:hover .mp-news-card__date {
+  transform: translateZ(30px);
+}
+
+.mp-news-card:hover .mp-news-card__excerpt {
+  transform: translateZ(20px);
+}
+
+.mp-news-card:hover .mp-news-card__link {
+  transform: translateZ(50px);
+  display: inline-block;
+}
+
+.mp-news-card::before {
+  content: "NEWS";
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  background: var(--neon-pink);
+  color: #000;
+  font-weight: bold;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  transform: skewX(-20deg);
+  box-shadow: 5px 5px 0 var(--neon-cyan);
+}
+
+.mp-news-card:hover {
+  transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
+  border-color: var(--neon-pink);
+  box-shadow: -10px 10px 0 rgba(255, 0, 255, 0.3);
+}
+
+.mp-news-card__title {
+  font-family: var(--mp-font-family-heading);
+  color: var(--neon-cyan);
+  margin-bottom: 1rem;
+}
+
+.mp-news-card__excerpt {
+  font-style: italic;
+  border-left: 2px solid var(--neon-yellow);
+  padding-left: 1rem;
+}
+
+/* ==========================================================================
+   Prose & Content - Glitch Effects & 3D
+   ========================================================================== */
+
+.mp-prose {
+  perspective: 1000px;
+}
+
+.mp-prose img {
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.mp-prose img:hover {
+  transform: rotateX(10deg) rotateY(-10deg) translateZ(30px);
+  box-shadow: 20px 20px 40px rgba(0, 255, 255, 0.3);
+}
+
+.mp-prose h2 {
+  position: relative;
+  color: var(--neon-yellow);
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.mp-prose h2:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -1px 0 red;
+  top: 0;
+  color: var(--neon-yellow);
+  background: var(--bg-deep);
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim {
+  0% { clip: rect(10px, 9999px, 50px, 0); }
+  20% { clip: rect(30px, 9999px, 20px, 0); }
+  40% { clip: rect(60px, 9999px, 80px, 0); }
+  60% { clip: rect(10px, 9999px, 40px, 0); }
+  80% { clip: rect(80px, 9999px, 90px, 0); }
+  100% { clip: rect(20px, 9999px, 30px, 0); }
+}
+
+.mp-prose blockquote {
+  background: linear-gradient(45deg, #1a0a2e, #0a0a0f);
+  border: 1px solid var(--neon-cyan);
+  border-left: 10px solid var(--neon-cyan);
+  padding: 2rem;
+  box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.mp-footer {
+  margin-top: 10rem;
+  background: #000;
+  padding: 4rem 0;
+  border-top: 4px solid var(--neon-pink);
+  position: relative;
+}
+
+.mp-footer::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--neon-pink);
+  box-shadow: 0 0 20px var(--neon-pink);
+}
+
+/* ==========================================================================
+   Customization Support
+   ========================================================================== */
+
+/* These would be injected by MicroPress from manifest.json values */
+:root {
+  /* Placeholder for injected variables */
+}
