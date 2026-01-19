@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'clean-minimal-v*'
+      - 'crazy-neon-v*'
   workflow_dispatch:
     inputs:
       theme_name:
@@ -13,6 +14,7 @@ on:
       version:
         description: 'Version (e.g., 1.0.0)'
         required: true
+        default: '0.1.0'
 
 jobs:
   build-and-release:
@@ -28,9 +30,10 @@ jobs:
         id: version
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
-            # Extract version from tag (e.g., clean-minimal-v1.0.0 -> 1.0.0)
-            VERSION=${GITHUB_REF#refs/tags/clean-minimal-v}
-            THEME_NAME="clean-minimal"
+            # Extract theme name and version from tag (e.g., clean-minimal-v1.0.0)
+            TAG=${GITHUB_REF#refs/tags/}
+            VERSION=${TAG##*-v}
+            THEME_NAME=${TAG%-v*}
           else
             VERSION="${{ github.event.inputs.version }}"
             THEME_NAME="${{ github.event.inputs.theme_name }}"
